@@ -37,12 +37,16 @@ python -m http.server 8000 -d docs
 
 Open `http://localhost:8000/`. With a configured key, an unfiltered `pytest` run also executes the live synthetic diagnostic.
 
+## Live website
+
+[Casino Bonus Comparison](https://casino-bonus-scraper-screening.vercel.app/) — public static page showing the committed `docs/bonuses.json` snapshot.
+
 ## Source limitations
 
 The data is a timestamped snapshot from [BetProof's South African casino-bonus comparison](https://betproof.co.za/casino-bonuses-south-africa/). Listings and operator terms can change. Springbok Casino's row bundles a no-deposit and multi-deposit offer; Thunderbolt Casino's row mentions multiple coupons. The source page provides one headline multiplier for each row but does not establish every component's conditions. The reported minimum deposit may not apply to every part of a bundle. Disallowed `/go/` click-through links are not followed. This is an informational technical demonstration, not an endorsement or gambling recommendation.
 
 ## Hosting boundary
 
-Vercel is configured for static output from `docs/` (`vercel.json`). GitHub contains source, tests, documentation, and the generated JSON. Vercel serves only the static page, assets, and committed JSON; it has no backend, function, scheduled scraper, or Gemini secret. Do not deploy until the deployment gate is explicitly approved.
+The existing Vercel project is connected to this GitHub repository and deploys the `main` branch with static output from `docs/` (`vercel.json`). Vercel serves the page assets and committed JSON only; `.vercelignore` excludes local environment files, process notes, and the Python scraper/tooling from deployment uploads. The scraper runs locally and manually. No Vercel environment variables, backend, function, scheduled scraper, or Gemini credential are required.
 
 Screening work remains separate from any future portfolio enhancements. See `docs/process/` for objective decisions, execution evidence, and validation results.
