@@ -12,6 +12,7 @@ from scraper import (
     ScraperError,
     _fetch_source_html,
     _load_allowed_robots,
+    normalize_single_multiplier,
     parse_target_rows,
     run_scraper,
     validate_extracted_terms,
@@ -174,6 +175,35 @@ def test_model_cannot_invent_a_deposit_amount() -> None:
         validate_extracted_terms(source_row, extracted)
 
 
+@pytest.mark.parametrize(
+    ("source_value", "expected"),
+    [("6x", 6), (" 30X ", 30), ("2.5x", 2.5), ("0x", 0)],
+)
+def test_normalize_unambiguous_multiplier_to_number(
+    source_value: str, expected: int | float
+) -> None:
+    result = normalize_single_multiplier(source_value)
+    assert result == expected
+    assert isinstance(result, (int, float))
+    assert not isinstance(result, bool)
+
+
+@pytest.mark.parametrize(
+    "source_value",
+    ["3x sports / 30x casino", "3x and 30x", "30 times", "6x casino", ""],
+)
+def test_normalization_rejects_unsupported_or_ambiguous_multiplier(
+    source_value: str,
+) -> None:
+    with pytest.raises(ScraperError, match="Unsupported or ambiguous"):
+        normalize_single_multiplier(source_value)
+
+
+def test_normalization_rejects_out_of_range_multiplier() -> None:
+    with pytest.raises(ScraperError, match="numeric range"):
+        normalize_single_multiplier("9" * 400 + "x")
+
+
 def test_scraper_uses_gemini_for_each_row_and_writes_validated_json(tmp_path: Path) -> None:
     session = FakeSession()
     gemini_models = FakeGeminiModels()
@@ -193,6 +223,16 @@ def test_scraper_uses_gemini_for_each_row_and_writes_validated_json(tmp_path: Pa
         "Springbok Casino",
         "Thunderbolt Casino",
     ]
+    assert [casino["wagering_requirement_multiplier"] for casino in dataset["casinos"]] == [
+        6,
+        30,
+        30,
+    ]
+    assert all(
+        isinstance(casino["wagering_requirement_multiplier"], (int, float))
+        and not isinstance(casino["wagering_requirement_multiplier"], bool)
+        for casino in dataset["casinos"]
+    )
     assert json.loads(output_path.read_text(encoding="utf-8")) == dataset
 
 

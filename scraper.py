@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 import os
 import re
 import sys
@@ -197,6 +198,31 @@ def _labelled_multiplier_facts(text: str) -> list[tuple[str, tuple[str, ...]]]:
     return sorted(facts)
 
 
+def normalize_single_multiplier(text: str) -> int | float:
+    """Convert one explicit multiplier such as ``6x`` to a JSON number.
+
+    Labels, multiple multipliers, and other formats are rejected rather than
+    guessed or flattened into a single value.
+    """
+    if not isinstance(text, str):
+        raise ScraperError("Wagering multiplier must be text before normalization.")
+    match = re.fullmatch(r"\s*(\d+(?:\.\d+)?)\s*x\s*", text, flags=re.IGNORECASE)
+    if match is None:
+        raise ScraperError(
+            f"Unsupported or ambiguous wagering multiplier format: {text!r}."
+        )
+
+    try:
+        value = float(match.group(1))
+    except (OverflowError, ValueError) as exc:
+        raise ScraperError("Wagering multiplier is outside the supported numeric range.") from exc
+    if not math.isfinite(value):
+        raise ScraperError("Wagering multiplier is outside the supported numeric range.")
+    if not value.is_integer():
+        return value
+    return int(value)
+
+
 def validate_extracted_terms(
     source_row: dict[str, str], extracted: dict[str, str]
 ) -> dict[str, str]:
@@ -273,7 +299,11 @@ def run_scraper(
         casinos.append(
             {
                 "casino": row["casino"],
-                **validated,
+                "welcome_bonus": validated["welcome_bonus"],
+                "wagering_requirement_multiplier": normalize_single_multiplier(
+                    validated["wagering_requirement_multiplier"]
+                ),
+                "minimum_deposit": validated["minimum_deposit"],
                 "source_url": row["source_url"],
             }
         )

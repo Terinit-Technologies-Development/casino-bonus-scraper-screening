@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A source-attributed snapshot comparing South African casino bonus listings.">
+    <meta name="theme-color" content="#f2f0e8">
+    <title>Casino Bonus Comparison — Screening Project</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="Casino bonus comparison home">
+        <span class="wordmark-mark" aria-hidden="true">B.</span>
+        <span>Bonus / Fieldnotes</span>
+      </a>
+      <p class="header-context">A small data-sourcing demonstration <span aria-hidden="true">·</span> South Africa</p>
+    </header>
+
+    <main id="top" class="page-shell">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Screening project <span class="eyebrow-divider">/</span> Data snapshot</p>
+          <h1 id="page-title">Casino bonuses,<br><em>side by side.</em></h1>
+          <p class="hero-intro">A compact comparison drawn from one published source. The figures below are a snapshot of that page—not independently verified operator terms.</p>
+        </div>
+        <aside class="hero-note" aria-label="About this dataset">
+          <div class="note-topline"><span>DATASET 01</span><span class="note-spark" aria-hidden="true">✳</span></div>
+          <p>One comparison page.<br>Listings from the scraper.</p>
+          <div class="note-rule"></div>
+          <span class="note-foot">Locally scraped · Source linked</span>
+        </aside>
+      </section>
+
+      <section class="comparison" aria-labelledby="comparison-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow section-kicker">The current snapshot</p>
+            <h2 id="comparison-title">Offers at a glance</h2>
+          </div>
+          <div class="snapshot-meta" aria-label="Dataset details">
+            <span id="record-count" class="record-count">Loading records</span>
+            <span class="meta-divider" aria-hidden="true"></span>
+            <time id="generated-at">Waiting for snapshot</time>
+          </div>
+        </div>
+
+        <p id="loading-status" class="loading-status" role="status" aria-live="polite">
+          <span class="status-indicator" aria-hidden="true"></span>
+          Loading the latest snapshot…
+        </p>
+        <div id="error-panel" class="error-panel" role="alert" hidden></div>
+
+        <div id="table-scroll" class="table-scroll" role="region" aria-label="Casino bonus comparison table" tabindex="0" hidden>
+          <table>
+            <caption class="visually-hidden">Casino, welcome bonus, wagering requirement, minimum deposit, and source.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Casino</th>
+                <th scope="col">Welcome bonus</th>
+                <th scope="col">Wagering requirement</th>
+                <th scope="col">Minimum deposit</th>
+                <th scope="col">Source</th>
+              </tr>
+            </thead>
+            <tbody id="casino-rows"></tbody>
+          </table>
+        </div>
+        <p id="scroll-hint" class="scroll-hint" aria-hidden="true" hidden>Scroll sideways to see all columns <span>→</span></p>
+      </section>
+
+      <section class="source-note" aria-labelledby="source-note-title">
+        <div class="source-note-mark" aria-hidden="true">i</div>
+        <div class="source-note-copy">
+          <p class="eyebrow">Source &amp; limitations</p>
+          <h2 id="source-note-title">A snapshot, not a promise.</h2>
+          <p>This informational technical demonstration reflects listings extracted from <a href="https://betproof.co.za/casino-bonuses-south-africa/" target="_blank" rel="noopener noreferrer">BetProof’s South African comparison page</a>. Offers and operator terms may change. Bundled bonuses can have additional conditions; the minimum deposit shown is the comparison source’s reported value and may not apply to every part of a bundle. Check the relevant operator’s terms independently.</p>
+          <p class="disclaimer">This page is not an endorsement or a gambling recommendation. No affiliate registration links or advertisements are included.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Bonus / Fieldnotes</span>
+      <span>Screening implementation <span aria-hidden="true">·</span> Static data view</span>
+    </footer>
+  </body>
+</html>
