@@ -1,0 +1,28 @@
+{
+  "generated_at": "2026-10-14T13:27:49Z",
+  "source_url": "https://betproof.co.za/casino-bonuses-south-africa/",
+  "model": "gemini-3.5-flash-lite",
+  "casinos": [
+    {
+      "casino": "PlayaBets",
+      "wagering_requirement_multiplier": "6x",
+      "minimum_deposit": "R10",
+      "welcome_bonus": "100% up to R3,000",
+      "source_url": "https://betproof.co.za/casino-bonuses-south-africa/"
+    },
+    {
+      "casino": "Springbok Casino",
+      "wagering_requirement_multiplier": "30x",
+      "minimum_deposit": "R25",
+      "welcome_bonus": "R250 no-deposit + up to R11,500 (3 deposits)",
+      "source_url": "https://betproof.co.za/casino-bonuses-south-africa/"
+    },
+    {
+      "casino": "Thunderbolt Casino",
+      "wagering_requirement_multiplier": "30x",
+      "minimum_deposit": "R25",
+      "welcome_bonus": "Up to R10,000 (4 coupons)",
+      "source_url": "https://betproof.co.za/casino-bonuses-south-africa/"
+    }
+  ]
+}

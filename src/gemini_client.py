@@ -11,6 +11,11 @@ from google import genai
 from google.genai import errors, types
 
 MODEL_ID = "gemini-3.5-flash-lite"
+BONUS_TERM_FIELDS = (
+    "welcome_bonus",
+    "wagering_requirement_multiplier",
+    "minimum_deposit",
+)
 
 BONUS_TERMS_SCHEMA: dict[str, Any] = {
     "type": "object",
@@ -81,13 +86,13 @@ def _validate_response(text: str | None) -> dict[str, str]:
     if not isinstance(payload, dict):
         raise GeminiResponseError("Gemini response must be a JSON object.")
 
-    expected = set(BONUS_TERMS_SCHEMA["required"])
+    expected = set(BONUS_TERM_FIELDS)
     if set(payload) != expected:
         raise GeminiResponseError("Gemini response fields do not match the required schema.")
     if any(not isinstance(payload[field], str) for field in expected):
         raise GeminiResponseError("All extracted bonus fields must be strings.")
 
-    return {field: payload[field] for field in BONUS_TERMS_SCHEMA["required"]}
+    return {field: payload[field] for field in BONUS_TERM_FIELDS}
 
 
 def extract_bonus_terms(
