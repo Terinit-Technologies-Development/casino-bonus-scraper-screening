@@ -1,0 +1,11 @@
+.env*
+.venv/
+__pycache__/
+.pytest_cache/
+scraper.py
+src/
+tests/
+requirements.txt
+README.md
+LICENSE
+docs/process/
