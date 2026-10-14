@@ -18,5 +18,6 @@ Objective evidence only. Times are UTC; no applicant-authored assessment respons
 | 2026-10-14 13:02:16Z | Vercel project configured | Static output `docs/`, no framework/build/install command, preview deployments temporarily disabled, deployment SSO protection disabled for intended public hosting. API readback confirmed these settings. |
 | 2026-10-14 13:03Z | Hosting/security verification | `.vercel.app` domain reserved and verified; project environment-variable list empty; deployment list count zero. HTTPS/live response awaits a real site deployment. |
 | 2026-10-14 13:04:55Z | Final verification snapshot | Offline tests still pass (8 passed, 1 skipped); working changes are documentation-only; no Gemini key or deployment exists. |
+| 2026-10-14 13:09:55Z | Deployment scope clarified | Reconfirmed local/manual scraper and Gemini; validated JSON will be committed to GitHub; Vercel remains static-only. No functions, backend, scheduler, or added infrastructure. |
 
 The Vercel MCP `get_auth_user` endpoint returned a 404 (`User not found`); the authenticated Vercel CLI and Vercel team/project APIs were used for account verification instead. Project API readback confirmed `outputDirectory: docs`, `previewDeploymentsDisabled: true`, `ssoProtection: null`, and `link.productionBranch: main`. No deployment has been started.

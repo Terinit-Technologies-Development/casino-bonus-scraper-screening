@@ -12,6 +12,10 @@ Foundation for the screening project and a later, separately tracked portfolio e
 - Static HTML, CSS and JavaScript served by Vercel from `docs/`.
 - The Gemini key is used locally by Python only; it must never be placed in frontend code, generated JSON, Vercel settings, or Git.
 
+## Runtime and hosting boundary
+
+The scraper is invoked manually on the owner's machine. It calls Gemini locally using `GEMINI_API_KEY`, validates the response, and writes `docs/bonuses.json`. The generated JSON is committed to GitHub with the source update; Vercel deploys only the static contents of `docs/` and serves the page and JSON. Vercel does not run or schedule the scraper and has no API, serverless function, database, or other backend for this project.
+
 ## Local setup
 
 1. Create and activate a Python 3.11+ virtual environment.

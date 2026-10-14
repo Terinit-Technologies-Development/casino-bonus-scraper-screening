@@ -20,4 +20,5 @@
 - GitHub: public repository verified anonymously (HTTP 200, `private: false`), default branch `main`, feature branch pushed. Main commit `80a8aeeabdc77a8ccfbf6890faea50213d11b4d6`; feature commit `fa9bc2cf1fdfb443fa0961919b859d575eb358c3`.
 - Vercel: Hobby plan verified; project `prj_1osuoVrHNkRr38wvaxKh2PasagPS` linked to GitHub. Readback confirms framework `null`, build/install command `null`, output directory `docs`, preview deployments disabled, production branch `main`, SSO protection `null`.
 - Deployments: zero. Domain `casino-bonus-scraper-screening.vercel.app` is reserved and verified. No deployment was started, so HTTPS service response is not yet testable; Vercel-managed HTTPS applies when a real deployment is made.
+- Runtime boundary: scraper/Gemini invocation remains local and manual; generated JSON is intended to be committed to GitHub; Vercel's sole role is static hosting from `docs/`. No Vercel functions, backend, or scheduler are configured.
 - No scraper, frontend, production JSON, or deployment is part of this pass.
