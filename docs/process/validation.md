@@ -16,7 +16,8 @@
 - Environment: Python 3.11.15 virtual environment; `google-genai==2.30.1`, Requests, BeautifulSoup, python-dotenv, and pytest installed from `requirements.txt`.
 - Unit tests: `python -m pytest -q` → **8 passed, 1 skipped**. The skipped test is the live synthetic Gemini diagnostic because no key is configured.
 - Live Gemini diagnostic: pending owner-provided local key and quota verification.
-- Secret exclusion / Git ignore: `.env` absent, `GEMINI_API_KEY` absent, `.env.example` contains an empty value; final tracked-file and ignore checks pending.
-- GitHub public repository and feature-branch push: pending.
-- Vercel project link, static output configuration, production branch, and absence of deployments: pending.
+- Secret exclusion / Git ignore: `.env` absent; `GEMINI_API_KEY` absent; `.env` ignored; `.env.example` not ignored and contains an empty placeholder; tracked-key-pattern scan had no matches. Vercel project environment-variable list is empty.
+- GitHub: public repository verified anonymously (HTTP 200, `private: false`), default branch `main`, feature branch pushed. Main commit `80a8aeeabdc77a8ccfbf6890faea50213d11b4d6`; feature commit `fa9bc2cf1fdfb443fa0961919b859d575eb358c3`.
+- Vercel: Hobby plan verified; project `prj_1osuoVrHNkRr38wvaxKh2PasagPS` linked to GitHub. Readback confirms framework `null`, build/install command `null`, output directory `docs`, preview deployments disabled, production branch `main`, SSO protection `null`.
+- Deployments: zero. Domain `casino-bonus-scraper-screening.vercel.app` is reserved and verified. No deployment was started, so HTTPS service response is not yet testable; Vercel-managed HTTPS applies when a real deployment is made.
 - No scraper, frontend, production JSON, or deployment is part of this pass.
